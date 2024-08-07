@@ -1,0 +1,101 @@
+
+// user-service
+// Id
+// full_nae
+// email
+// password
+
+// create_user
+// update
+// delete
+// get by id
+// get users
+
+syntax = "proto3";
+
+option go_package = "/genproto/user";
+
+service UserService {
+    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+    rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
+    rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
+    rpc GetUserById(GetUserByIdRequest) returns (GetUserByIdResponse);
+    rpc GetUsers(Viod) returns (GetUsersResponce){};
+}
+
+message User {
+    string id = 1;
+    string full_name = 2;
+    string email = 3;
+    string password = 4;
+}
+
+
+
+
+//CREATE 
+message CreateUserRequest {
+    string full_name = 1;
+    string email = 2;
+    string password = 3;
+}
+
+message CreateUserResponse {
+    string status = 1;
+    string message = 2;
+    string password = 3;
+    User user = 4;
+   
+}
+
+
+
+//UPDATE
+message UpdateUserRequest {
+    string id = 1;
+    string full_name = 2;
+    string email = 3;
+    string password = 4;
+}
+
+message UpdateUserResponse {
+    string status = 1;
+    string message = 2;
+    User user = 3;
+}
+
+
+
+
+//DELETE
+message DeleteUserRequest {
+    string id = 1;
+}
+
+message DeleteUserResponse {
+    string status = 1;
+    string message = 2;
+}
+
+
+
+//GET USER ID
+message GetUserByIdRequest {
+    string id = 1;
+}
+
+message GetUserByIdResponse {
+    string status = 1;
+    string message = 2;
+    User user = 3;
+
+}
+
+
+
+//GET USERS
+message GetUsersResponce {
+    repeated User user = 1;
+}
+
+message Viod{}
